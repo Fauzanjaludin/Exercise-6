@@ -102,6 +102,7 @@ public class Test1 {
 		frame.getContentPane().add(intRate);
 		
 		JLabel lblNewLabel_6 = new JLabel("Loan Period");
+		lblNewLabel_6.setToolTipText("in Years");
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_6.setBounds(271, 130, 205, 19);
 		frame.getContentPane().add(lblNewLabel_6);
@@ -122,11 +123,13 @@ public class Test1 {
 		frame.getContentPane().add(monIns);
 		
 		Salary = new JTextField();
+		Salary.setToolTipText("in myr");
 		Salary.setBounds(336, 32, 180, 20);
 		frame.getContentPane().add(Salary);
 		Salary.setColumns(10);
 		
 		txtInt = new JTextField();
+		txtInt.setToolTipText("in percent");
 		txtInt.setBounds(387, 102, 210, 20);
 		frame.getContentPane().add(txtInt);
 		txtInt.setColumns(10);
