@@ -165,7 +165,7 @@ public class Test1 {
 		apLabel.setBounds(371, 309, 485, 29);
 		frame.getContentPane().add(apLabel);
 		
-		JButton btnNewButton = new JButton("Test");
+		JButton btnNewButton = new JButton("Confirm");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
