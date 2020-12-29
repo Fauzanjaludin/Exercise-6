@@ -223,7 +223,7 @@ public class Test1 {
 					
 					}
 				}catch(Exception e1) {
-					JOptionPane.showMessageDialog(null, "Oops it brokey");
+					JOptionPane.showMessageDialog(null, "Please enter the Correct Value");
 				}
 			}
 		});
