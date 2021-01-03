@@ -15,10 +15,31 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTabbedPane;
+import javax.swing.JPanel;
+import javax.swing.JDesktopPane;
+import javax.swing.JLayeredPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
+import javax.swing.ListSelectionModel;
+import javax.swing.border.TitledBorder;
+import java.awt.GridLayout;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+
+import java.util.UUID;
+import javax.swing.JCheckBox;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
+import javax.swing.JTextPane;
 
 public class Test1 {
 
-	private JFrame frame;
+	private JFrame frmProtonRegistry;
 	private JTextField Salary;
 	private JTextField txtInt;
 	private JTextField loanPer;
@@ -31,7 +52,7 @@ public class Test1 {
 			public void run() {
 				try {
 					Test1 window = new Test1();
-					window.frame.setVisible(true);
+					window.frmProtonRegistry.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -50,122 +71,133 @@ public class Test1 {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 933, 517);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmProtonRegistry = new JFrame();
+		frmProtonRegistry.setTitle("Proton Registry");
+		frmProtonRegistry.setBounds(100, 100, 933, 554);
+		frmProtonRegistry.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmProtonRegistry.getContentPane().setLayout(null);
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(10, 11, 897, 500);
+		frmProtonRegistry.getContentPane().add(tabbedPane);
+		
+		JPanel panel = new JPanel();
+		tabbedPane.addTab("Info", null, panel, null);
+		panel.setLayout(null);
 		
 		JLabel price = new JLabel("Price :");
+		price.setBounds(361, 336, 506, 20);
+		panel.add(price);
 		price.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		price.setBounds(371, 339, 506, 20);
-		frame.getContentPane().add(price);
 		
 		JLabel carmod = new JLabel("Car");
+		carmod.setBounds(50, 442, 256, 14);
+		panel.add(carmod);
 		carmod.setHorizontalAlignment(SwingConstants.CENTER);
-		carmod.setBounds(60, 453, 256, 14);
-		frame.getContentPane().add(carmod);
 		
 		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(46, 0, 205, 179);
+		panel.add(lblNewLabel);
 		lblNewLabel.setIcon(new ImageIcon(Test1.class.getResource("/a2/200px-PROTON_Holdings_logo_(2019\u2013present).png")));
-		lblNewLabel.setBounds(56, 11, 205, 179);
-		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel pic = new JLabel("");
+		pic.setBounds(0, 175, 351, 256);
+		panel.add(pic);
 		pic.setHorizontalAlignment(SwingConstants.CENTER);
 		pic.setIcon(new ImageIcon(Test1.class.getResource("/a2/SaGA-256x256.jpg")));
-		pic.setBounds(10, 186, 351, 256);
-		frame.getContentPane().add(pic);
 		
 		JLabel Sallabel = new JLabel("Salary");
+		Sallabel.setBounds(261, 18, 63, 29);
+		panel.add(Sallabel);
 		Sallabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		Sallabel.setBounds(271, 25, 63, 29);
-		frame.getContentPane().add(Sallabel);
 		
 		JLabel modlabel = new JLabel("Model");
+		modlabel.setBounds(261, 58, 71, 20);
+		panel.add(modlabel);
 		modlabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		modlabel.setBounds(271, 65, 71, 20);
-		frame.getContentPane().add(modlabel);
 		
 		JLabel aftSal = new JLabel("Salary After Monthly Payment :");
+		aftSal.setBounds(532, 18, 360, 29);
+		panel.add(aftSal);
 		aftSal.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		aftSal.setBounds(547, 25, 360, 29);
-		frame.getContentPane().add(aftSal);
 		
 		JLabel lblNewLabel_4 = new JLabel("Features");
+		lblNewLabel_4.setBounds(361, 195, 122, 19);
+		panel.add(lblNewLabel_4);
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		lblNewLabel_4.setBounds(371, 185, 122, 19);
-		frame.getContentPane().add(lblNewLabel_4);
 		
 		JLabel intRate = new JLabel("Interest Rate");
+		intRate.setBounds(261, 88, 210, 20);
+		panel.add(intRate);
 		intRate.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		intRate.setBounds(271, 99, 210, 20);
-		frame.getContentPane().add(intRate);
 		
 		JLabel lblNewLabel_6 = new JLabel("Loan Period");
+		lblNewLabel_6.setBounds(261, 119, 205, 19);
+		panel.add(lblNewLabel_6);
 		lblNewLabel_6.setToolTipText("in Years");
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_6.setBounds(271, 130, 205, 19);
-		frame.getContentPane().add(lblNewLabel_6);
 		
 		JLabel totInt = new JLabel("Total Interest :");
+		totInt.setBounds(361, 367, 485, 14);
+		panel.add(totInt);
 		totInt.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		totInt.setBounds(371, 378, 485, 14);
-		frame.getContentPane().add(totInt);
 		
 		JLabel monInt = new JLabel("Monthly Interest :");
+		monInt.setBounds(361, 392, 485, 14);
+		panel.add(monInt);
 		monInt.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		monInt.setBounds(371, 403, 485, 14);
-		frame.getContentPane().add(monInt);
 		
 		JLabel monIns = new JLabel("Monthly Installment :");
+		monIns.setBounds(361, 417, 485, 14);
+		panel.add(monIns);
 		monIns.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		monIns.setBounds(371, 428, 485, 14);
-		frame.getContentPane().add(monIns);
 		
 		Salary = new JTextField();
+		Salary.setBounds(326, 25, 180, 20);
+		panel.add(Salary);
 		Salary.setToolTipText("in myr");
-		Salary.setBounds(336, 32, 180, 20);
-		frame.getContentPane().add(Salary);
 		Salary.setColumns(10);
 		
 		txtInt = new JTextField();
+		txtInt.setBounds(377, 91, 210, 20);
+		panel.add(txtInt);
 		txtInt.setToolTipText("in percent");
-		txtInt.setBounds(387, 102, 210, 20);
-		frame.getContentPane().add(txtInt);
 		txtInt.setColumns(10);
 		
 		loanPer = new JTextField();
-		loanPer.setBounds(387, 130, 210, 20);
-		frame.getContentPane().add(loanPer);
+		loanPer.setBounds(377, 119, 210, 20);
+		panel.add(loanPer);
 		loanPer.setColumns(10);
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(326, 58, 180, 22);
+		panel.add(comboBox);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Saga", "X50", "X70"}));
 		comboBox.setMaximumRowCount(3);
-		comboBox.setBounds(336, 65, 180, 22);
-		frame.getContentPane().add(comboBox);
 		
 		JLabel tranLabel = new JLabel("Transmission :");
+		tranLabel.setBounds(361, 225, 485, 29);
+		panel.add(tranLabel);
 		tranLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		tranLabel.setBounds(371, 219, 485, 29);
-		frame.getContentPane().add(tranLabel);
 		
 		JLabel tyreLabel = new JLabel("Tyres :");
+		tyreLabel.setBounds(361, 252, 485, 29);
+		panel.add(tyreLabel);
 		tyreLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		tyreLabel.setBounds(371, 249, 485, 29);
-		frame.getContentPane().add(tyreLabel);
 		
 		JLabel colorLabel = new JLabel("Color :\r\n");
+		colorLabel.setBounds(361, 278, 485, 29);
+		panel.add(colorLabel);
 		colorLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		colorLabel.setBounds(371, 279, 485, 29);
-		frame.getContentPane().add(colorLabel);
 		
 		JLabel apLabel = new JLabel("Autopark :");
+		apLabel.setBounds(361, 306, 485, 29);
+		panel.add(apLabel);
 		apLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		apLabel.setBounds(371, 309, 485, 29);
-		frame.getContentPane().add(apLabel);
 		
 		JButton btnNewButton = new JButton("Confirm");
+		btnNewButton.setBounds(597, 84, 256, 55);
+		panel.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -227,7 +259,5 @@ public class Test1 {
 				}
 			}
 		});
-		btnNewButton.setBounds(607, 95, 256, 55);
-		frame.getContentPane().add(btnNewButton);
 	}
 }
